@@ -4,7 +4,7 @@
 # Author: tteck (tteckster)
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
-#Allow Proxmox VE 9.x
+# Allow Proxmox VE 9.x
 
 function header_info {
   clear
