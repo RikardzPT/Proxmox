@@ -4,6 +4,7 @@
 # Author: tteck (tteckster)
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
+#Allow Proxmox VE 9.x
 
 function header_info {
   clear
@@ -115,13 +116,14 @@ function check_root() {
 }
 
 function pve_check() {
-  if ! pveversion | grep -Eq "pve-manager/8.[1-3]"; then
-    msg_error "This version of Proxmox Virtual Environment is not supported"
-    echo -e "Requires Proxmox Virtual Environment Version 8.1 or later."
-    echo -e "Exiting..."
-    sleep 2
-    exit
-fi
+  if [[ "$pve_version" < "8.1" && "$pve_version" != 9.* ]]; then
+      echo "✗ This version of Proxmox Virtual Environment is not supported"
+      echo -e "Exiting..."
+      sleep 2
+      exit 1
+      
+  fi
+
 }
 
 function arch_check() {
