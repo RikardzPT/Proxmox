@@ -116,6 +116,8 @@ function check_root() {
 }
 
 function pve_check() {
+# Garantir que a variável pve_version está definida
+pve_version=$(pveversion | awk -F'-' '{print $1}')
   if [[ "$pve_version" < "8.1" && "$pve_version" != 9.* ]]; then
       echo "✗ This version of Proxmox Virtual Environment is not supported"
       echo -e "Exiting..."
